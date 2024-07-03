@@ -168,7 +168,8 @@ Banten Panglipur is an online platform that aims to showcase, preserve, and prom
 - **Body JSON:**
 ```json
 {
-   {<request_object>},
+   "password": "",
+   "image_profile": ""
 }
 ```
 #### Success Response:
