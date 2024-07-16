@@ -5,6 +5,7 @@ const usersRouter = require('./routes/usersRoutes');
 const placeRoutes = require('./routes/placeRoutes');
 const favoritesRouter = require('./routes/favoritesRoutes');
 const userReviewRoutes = require('./routes/userReviewsRoutes');
+const userAuth = require('./routes/authRoutes');
 
 // Enable CORS for all routes
 app.use(cors());
@@ -15,6 +16,7 @@ app.use('/users', usersRouter);
 app.use('/places', placeRoutes);
 app.use('/favorites', favoritesRouter);
 app.use('/reviews', userReviewRoutes);
+app.use('/auth', userAuth);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
