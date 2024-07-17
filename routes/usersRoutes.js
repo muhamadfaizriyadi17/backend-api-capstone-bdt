@@ -8,5 +8,7 @@ router.get('/:id', usersController.getUserById);
 router.put('/:id', usersController.updateUser);
 router.patch('/:id', usersController.partialUpdateUser);
 router.delete('/:id', usersController.deleteUser);
+router.post('/regist', usersController.registerUser);
+router.post('/login', usersController.loginUser);
 
 module.exports = router;

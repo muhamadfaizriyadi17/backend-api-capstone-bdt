@@ -96,4 +96,50 @@ exports.deleteUser = async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: 'Failed to delete user data', error: error.message });
     }
+    
+};
+// Registrasi pengguna
+exports.registerUser = async (req, res) => {
+    const { username, email, password } = req.body;
+
+    try {
+        // Periksa apakah email sudah digunakan
+        const existingUser = await db.query('SELECT * FROM users WHERE email = $1', [email]);
+        if (existingUser.rows.length > 0) {
+            return res.status(400).json({ error: 'Email sudah digunakan' });
+        }
+
+        // Tambahkan pengguna baru ke database
+        const newUser = await db.query('INSERT INTO users (username, email, password) VALUES ($1, $2, $3) RETURNING *', [username, email, password]);
+
+        res.status(201).json({ message: 'Pengguna berhasil terdaftar', data: newUser.rows[0] });
+    } catch (err) {
+        console.error('Gagal mendaftar pengguna:', err);
+        res.status(500).json({ error: 'Terjadi kesalahan saat mendaftar pengguna' });
+    }
+};
+
+// Login pengguna
+exports.loginUser = async (req, res) => {
+    const { email, password } = req.body;
+
+    try {
+        // Cari pengguna berdasarkan email
+        const user = await db.query('SELECT * FROM users WHERE email = $1', [email]);
+
+        // Periksa apakah pengguna ditemukan
+        if (user.rows.length === 0) {
+            return res.status(404).json({ error: 'Email atau kata sandi salah' });
+        }
+
+        // Verifikasi kata sandi
+        if (password !== user.rows[0].password) {
+            return res.status(401).json({ error: 'Email atau kata sandi salah' });
+        }
+
+        res.status(200).json({ message: 'Berhasil login', data: user.rows[0] });
+    } catch (err) {
+        console.error('Gagal login pengguna:', err);
+        res.status(500).json({ error: 'Terjadi kesalahan saat login pengguna' });
+    }
 };
