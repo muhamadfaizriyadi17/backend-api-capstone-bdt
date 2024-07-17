@@ -272,6 +272,77 @@ Customize the url path in the documentation
     message: 'Failed to delete user data'
 }
 ```
+### REGIST user
+- **URL:** `http://localhost:3000/users/regist`
+- **Method:** `POST`
+- **Headers:** `Content-Type: application/json`
+- **Body JSON:**
+```json
+{
+   "username": "",
+   "email": "",
+   "password": ""
+}
+```
+
+#### Success Response:
+- **Code:** 200
+- **Content:**
+```json
+{
+    "message": "Pengguna berhasil terdaftar"
+}
+```
+#### Error Response:
+- **Code:** 404
+- **Content:**
+```json
+{
+    message: 'Email sudah digunakan'
+}
+```
+- **Code:** 500
+- **Content:**
+```json
+{
+    message: 'Terjadi kesalahan saat mendaftar pengguna'
+}
+```
+
+### LOGIN user
+- **URL:** `http://localhost:3000/users/login`
+- **Method:** `POST`
+- **Headers:** `Content-Type: application/json`
+- **Body JSON:**
+```json
+{
+   "email": "",
+   "password": "",
+}
+```
+#### Success Response:
+- **Code:** 200
+- **Content:**
+```json
+{
+    "message": "Berhasil login"
+}
+```
+#### Error Response:
+- **Code:** 404
+- **Content:**
+```json
+{
+    message: 'Email atau kata sandi salah'
+}
+```
+- **Code:** 500
+- **Content:**
+```json
+{
+    message: 'Terjadi kesalahan saat login penggunata'
+}
+```
 
 ## Place
 ### GET All Places
