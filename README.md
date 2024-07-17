@@ -1,6 +1,46 @@
 # Banten-Panglipur
 Banten Panglipur is an online platform that aims to showcase, preserve, and promote the rich cultural heritage of the Banten region in Indonesia. The website serves as a comprehensive resource for information and insights into the unique traditions, customs, arts, cuisine, and history of the Banten people.
 
+## Getting Started
+
+### Prerequisites
+Before you begin, ensure you have met the following requirements:
+- Node.js and npm installed. You can download them from [Node.js](https://nodejs.org/).
+- A Supabase account and project. Sign up at [Supabase](https://supabase.io/).
+
+### Clone the Repository
+To get a copy of the project up and running on your local machine, follow these steps:
+
+```sh
+git clone https://github.com/your-username/banten-panglipur.git
+```
+```sh
+cd backend-api-capstone-bdt
+```
+### Creat Environment File
+To run the application please create an .env file first and enter the credentials of the database url from Supabase. Creat .env file and enter code like this.
+```sh
+DATABASE_URL=CREDENTIAL_URL_SUPABASE
+```
+fill in CREDENTIAL_URL_SUPABASE with the url of your database in the Supabase.
+### Install Package
+To install the available packages please run this command
+```sh
+npm install
+```
+### Run Application
+Run the application backend by executing the command
+```sh
+npm run start-dev
+```
+### Testing Application
+Testing the application using postman, by following the API documentation below
+```sh
+http://localhost:3000/
+```
+Customize the url path in the documentation
+
+## API Documentation
 * User object
 ```
 {
