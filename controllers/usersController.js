@@ -143,3 +143,9 @@ exports.loginUser = async (req, res) => {
         res.status(500).json({ error: 'Terjadi kesalahan saat login pengguna' });
     }
 };
+
+exports.logoutUser = async (req, res) => {
+    
+    // Contoh sederhana, menganggap pengguna sudah logout
+    res.status(200).json({ message: 'Berhasil logout' });
+};
